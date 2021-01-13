@@ -20,15 +20,15 @@ class MainActivity : AppCompatActivity() {
         val bisherigesErgebnisFeld: TextView = findViewById(R.id.feld_bisherigesErgebnis)
 
 
-
         val button_rechnen : Button = findViewById(R.id.button_rechnen)
+        button_rechnen.setOnClickListener { rechnenAktion(aktuellesErgebnisFeld, bisherigesErgebnisFeld) }
 
-        button_rechnen.setOnClickListener { rechnenAktion(bisherigesErgebnisFeld, aktuellesErgebnisFeld) }
 
         val button_reset : Button = findViewById(R.id.button_reset)
-        button_reset.setOnClickListener { resetAktion(bisherigesErgebnisFeld, aktuellesErgebnisFeld) }
-
+        button_reset.setOnClickListener { resetAktion(aktuellesErgebnisFeld, bisherigesErgebnisFeld) }
     }
+
+
 
     fun rechnenAktion(ergebnisFeld : TextView, bisherigesErgebnis : TextView){
         bisherigesErgebnis.text = ergebnisFeld.text
@@ -38,10 +38,39 @@ class MainActivity : AppCompatActivity() {
         ergebnisFeld.text = rechnung.rechnen(zahl).toString()
     }
 
+
     fun resetAktion(ergebnisFeld: TextView, bisherigesErgebnis: TextView){
         //bisherigesErgebnis.text = 0.toString()
         //ergebnisFeld.text = 0.toString()
         rechnung.reset()
+    }
 
+
+
+
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("LOGS", "--> onStart aufgerufen")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.i("LOGS", "--> onResume aufgerufen")
+    }
+    override fun onPause() {
+        super.onPause()
+        Log.i("LOGS", "--> onPause aufgerufen")
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.i("LOGS", "--> onStop aufgerufen")
+    }
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("LOGS", "--> onRestart aufgerufen")
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("LOGS", "--> onDestroy aufgerufen")
     }
 }

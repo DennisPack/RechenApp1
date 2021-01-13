@@ -6,7 +6,8 @@ data class Rechnung(private var ergebnis : Int = 0){
         return ergebnis
     }
     fun reset() {
-        ergebnis = 0}
+        ergebnis = 0
+    }
 
     fun gibErgebnis() = ergebnis
 }
