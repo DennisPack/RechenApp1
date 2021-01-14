@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 
-class MainActivity : AppCompatActivity() {
+class RechnenActivity : AppCompatActivity() {
 
     val rechnung = Rechnung()
 
@@ -16,32 +16,34 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        // Ergebnisfelder
         val aktuellesErgebnisFeld: TextView = findViewById(R.id.feld_aktuellesErgebnis)
-        val bisherigesErgebnisFeld: TextView = findViewById(R.id.feld_bisherigesErgebnis)
+        val vorherigesErgebnisFeld: TextView = findViewById(R.id.feld_bisherigesErgebnis)
 
-
-        val button_rechnen : Button = findViewById(R.id.button_rechnen)
-        button_rechnen.setOnClickListener { rechnenAktion(aktuellesErgebnisFeld, bisherigesErgebnisFeld) }
-
-
-        val button_reset : Button = findViewById(R.id.button_reset)
-        button_reset.setOnClickListener { resetAktion(aktuellesErgebnisFeld, bisherigesErgebnisFeld) }
+        // Buttons
+        val buttonRechnen: Button = findViewById(R.id.button_rechnen)
+        buttonRechnen.setOnClickListener { rechnen(aktuellesErgebnisFeld, vorherigesErgebnisFeld) }
+        val buttonReset: Button = findViewById(R.id.button_reset)
+        buttonReset.setOnClickListener { zuruecksetzen(aktuellesErgebnisFeld, vorherigesErgebnisFeld) }
     }
 
 
 
-    fun rechnenAktion(ergebnisFeld : TextView, bisherigesErgebnis : TextView){
-        bisherigesErgebnis.text = ergebnisFeld.text
+    fun rechnen(aktuellesErgebnisFeld : TextView, vorherigesErgebnisFeld : TextView){
+        // Vorheriges Ergebnis in UI setzen
+        vorherigesErgebnisFeld.text = aktuellesErgebnisFeld.text
 
-        val eingabeZahlFeld = findViewById<TextView>(R.id.Eingabe_Zahl)
-        val zahl = eingabeZahlFeld.text.toString().toInt()
-        ergebnisFeld.text = rechnung.rechnen(zahl).toString()
+        // UserEingabe holen
+        val eingabeFeld = findViewById<TextView>(R.id.Eingabe_Zahl)
+        val eingabe = eingabeFeld.text.toString().toInt()
+        // Rechnung und Ergebnis an UI geben
+        aktuellesErgebnisFeld.text = rechnung.rechnen(eingabe).toString()
     }
 
 
-    fun resetAktion(ergebnisFeld: TextView, bisherigesErgebnis: TextView){
-        //bisherigesErgebnis.text = 0.toString()
-        //ergebnisFeld.text = 0.toString()
+    fun zuruecksetzen(ergebnisFeld: TextView, bisherigesErgebnis: TextView){
+        bisherigesErgebnis.text = 0.toString()
+        ergebnisFeld.text = 0.toString()
         rechnung.reset()
     }
 

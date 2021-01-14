@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".RechnenActivity">
 
     <Button
         android:id="@+id/button_reset"
@@ -38,6 +38,7 @@
         android:layout_marginBottom="535dp"
         android:hint="Zahl eingeben"
         android:singleLine="true"
+        android:text="0"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
