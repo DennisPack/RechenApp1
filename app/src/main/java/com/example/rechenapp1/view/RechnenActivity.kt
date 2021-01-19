@@ -15,7 +15,7 @@ class RechnenActivity : AppCompatActivity() {
     private lateinit var meinViewModel : RechnenViewModel
     //DataBinding
     private lateinit var binding: ActivityMainBinding
-
+    // dad
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
