@@ -1,11 +1,12 @@
-package com.example.rechenapp1
+package com.example.rechenapp1.model
 
 data class Rechnung(private var aktuellesErgebnis : Int = 0){
-    fun rechnen(bisherigesErgebnis : Int) : Int{
-        aktuellesErgebnis += bisherigesErgebnis
+
+    fun rechnen(eingabe : Int) : Int{
+        aktuellesErgebnis += eingabe
         return aktuellesErgebnis
     }
-    fun reset() {
+    fun zurueckSetzen() {
         aktuellesErgebnis = 0
     }
 
